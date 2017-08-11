@@ -5,6 +5,9 @@ var Account = require('../models/account');
 
 
 router.get('/', function(req, res) {
+    if (req.isAuthenticated()){
+        res.redirect('/');
+    }
     res.render('register', { });
 });
 
