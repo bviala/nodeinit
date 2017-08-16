@@ -1,0 +1,30 @@
+extends layout
+
+block content
+    h1 New match
+
+    if(!teams)
+        p Sorry, we couldn't find any team to play matches.
+    else
+        form(role='form', action="/matches/add", method="post", style='max-width: 300px;')
+            .form-group
+                p
+                    | Team A :
+                    |
+                    select(name="teamA")
+                        each team in teams
+                            option(value=team.id) #{team.name}
+            .form-group
+                p
+                    | Team B :
+                    |
+                    select(name="teamB")
+                        each team in teams
+                            option(value=team.id) #{team.name}
+            .form-group
+                p
+                    | Date :
+                    |
+                    input.form-control(type='datetime-local', name="date")
+            button.btn.btn-default(type='submit') Submit
+

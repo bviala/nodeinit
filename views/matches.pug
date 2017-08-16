@@ -1,0 +1,28 @@
+extends layout
+
+block content
+    h1 Matches list
+
+    if(!matches)
+        p Sorry, no match listed yet !
+    else
+        p Here is the matches list:
+        ul
+            each match in matches
+                li #{match.teamA} vs #{match.teamB} @ #{match.date}
+
+
+    if(user)
+        p
+            a(href="/matches/add") Add a match !
+    else
+        p
+            | Want to add a match ? Please
+            |
+            a(href="/") log in
+            |
+            | or
+            |
+            a(href="/register") register
+            |
+            | !
