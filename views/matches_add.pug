@@ -26,5 +26,10 @@ block content
                     | Date :
                     |
                     input.form-control(type='datetime-local', name="date")
+                    br
+                    | (Leave blank if to be announced)
             button.btn.btn-default(type='submit') Submit
+
+            if(message)
+                p #{message}
 

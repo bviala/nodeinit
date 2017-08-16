@@ -9,8 +9,10 @@ block content
         p Here is the matches list:
         ul
             each match in matches
-                li #{match.teamA} vs #{match.teamB} @ #{match.date}
-
+                if match.date
+                    li #{match.teamA.name} vs #{match.teamB.name} @ #{match.date}
+                else
+                    li #{match.teamA.name} vs #{match.teamB.name} @ TBA
 
     if(user)
         p
