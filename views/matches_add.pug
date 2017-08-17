@@ -25,11 +25,10 @@ block content
                 p
                     | Date :
                     |
-                    input.form-control(type='datetime-local', name="date")
+                    input.form-control(type='datetime-local', name="date", placeholder="1993-12-27T17:30:00")
                     br
-                    | (Leave blank if to be announced)
+                    | Leave unfilled if the date is to be announced)
             button.btn.btn-default(type='submit') Submit
 
-            if(message)
+            if(message != '')
                 p #{message}
-

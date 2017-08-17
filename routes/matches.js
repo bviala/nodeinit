@@ -53,19 +53,20 @@ router.post('/add', function (req, res) {
                teamB: req.body.teamB,
                date: req.body.date
             });
-            match.save(function (err, team) { // save the match in the db
+            match.save(function (err, match) { // save the match in the db
                 if(err){
-                    console.log('error while saving team: ', team);
+                    console.log('error while saving match: ', match);
                     console.error(err);
+                    req.flash('error', 'Error while creating the match. If you have trouble entering a valid date, consider using Chrome or Edge.');
+                    res.redirect('/matches/add');
+                } else {
+                    res.redirect('/matches');
                 }
             });
-            res.redirect('/matches');
         } else {
             req.flash('error', "Please select two different teams to create a match.")
             res.redirect('/matches/add')
         }
-
-
     } else {
         res.redirect('/')
     }
