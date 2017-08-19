@@ -9,6 +9,7 @@ var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var recaptcha = require('express-recaptcha');
 var configDB = require('./config/database');
 
 var index = require('./routes/index');
@@ -18,6 +19,9 @@ var logout = require('./routes/logout');
 var matches = require('./routes/matches');
 
 var app = express();
+
+// recaptcha configuration
+recaptcha.init('6LeHQi0UAAAAAB0FUQqem7TVscQzSBN_F3-Bhubr', '6LeHQi0UAAAAABxphMb20JJYUyoAz5gVMCBnEns1');
 
 // database connection
 mongoose.connect(configDB.url);
